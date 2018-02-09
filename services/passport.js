@@ -9,15 +9,16 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
     User.findById(id).then((user) => {
-        done(null, user); 
-    }); 
+        done(null, user);
+    });
 });
 
 const User = mongoose.model('users');
 passport.use(new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleSecretID,
-        callbackURL: '/auth/google/callback'
+        callbackURL: '/auth/google/callback',
+        proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
         User.findOne({
