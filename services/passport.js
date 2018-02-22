@@ -3,35 +3,38 @@ const mongoose = require('mongoose');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('../config/keys');
 
+var User = mongoose.model('users');
+
 passport.serializeUser((user, done) => {
     done(null, user.id); //id from Mongo record, not googleID
 });
 
-passport.deserializeUser((id, done) => {
-    User.findById(id).then((user) => {
-        done(null, user);
-    });
+passport.deserializeUser(async(id, done) => {
+    const user = await User.findById(id);
+    console.log(`User deserialized: ${user}`);
+    done(null, user);
 });
 
-const User = mongoose.model('users');
 passport.use(new GoogleStrategy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleSecretID,
         callbackURL: '/auth/google/callback',
         proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-        User.findOne({
+    async(accessToken, refreshToken, profile, done) => {
+        const existingUser = await User.findOne({
             googleID: profile.id
-        }).then((existingUser) => {
-            if (existingUser) {
-                done(null, existingUser);
-            } else {
-                new User({
-                    googleID: profile.id,
-                    name: profile.displayName
-                }).save().then((user => done(null, user)));
-            }
         });
+        if (existingUser) {
+            console.log(`User exists: ${existingUser}`);
+            done(null, existingUser);
+        } else {
+            const newUser = await new User({
+                googleID: profile.id,
+                name: profile.displayName
+            }).save();
+            console.log(`New User : ${newUser}`);
+            done(null, newUser);
+        }
     }
 ));
