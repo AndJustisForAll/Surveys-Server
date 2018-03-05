@@ -9,9 +9,8 @@ passport.serializeUser((user, done) => {
     done(null, user.id); //id from Mongo record, not googleID
 });
 
-passport.deserializeUser(async(id, done) => {
+passport.deserializeUser(async (id, done) => {
     const user = await User.findById(id);
-    console.log(`User deserialized: ${user}`);
     done(null, user);
 });
 
@@ -21,20 +20,18 @@ passport.use(new GoogleStrategy({
         callbackURL: '/auth/google/callback',
         proxy: true
     },
-    async(accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
         const existingUser = await User.findOne({
             googleID: profile.id
         });
         if (existingUser) {
-            console.log(`User exists: ${existingUser}`);
-            done(null, existingUser);
-        } else {
-            const newUser = await new User({
-                googleID: profile.id,
-                name: profile.displayName
-            }).save();
-            console.log(`New User : ${newUser}`);
-            done(null, newUser);
+            return done(null, existingUser);
         }
+        const newUser = await new User({
+            googleID: profile.id,
+            name: profile.displayName
+        }).save();
+        done(null, newUser);
+
     }
 ));
