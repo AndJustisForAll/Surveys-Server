@@ -9,12 +9,14 @@ import {
     applyMiddleware
 } from "redux";
 import reducers from "./reducers";
-import 'materialize-css/dist/css/materialize.min.css';
 import reduxThunk from 'redux-thunk';
+
+import 'materialize-css/dist/css/materialize.min.css';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
     <Provider store={store}>
         <App />
-    </Provider>, document.querySelector('#root'));
+    </Provider>, document.querySelector('#root')
+);
