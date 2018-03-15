@@ -15,17 +15,14 @@ class Header extends Component {
         switch (this.props.auth) {
             case null:
                 return;
-                break;
             case false:
                 return <li><a href="/auth/google">Login with Google</a></li>
-                break;
             default:
                 return [
                     <li key="h_payment"><Payments /></li>,
                     <li key="h_credits"><span>Credits: {this.props.auth.credits}</span></li>,
                     <li key="h_logout"><a href="/api/logout">Logout</a></li>
                 ]
-                break;
         }
     }
     render() {

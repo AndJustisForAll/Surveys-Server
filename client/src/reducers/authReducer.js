@@ -10,8 +10,6 @@ export default (state = null, action) => {
             //user is logged in; return payload
             //user isn't logged in; return false
             return action.payload || false;
-            return state;
-            break;
         default:
             return state;
     }
