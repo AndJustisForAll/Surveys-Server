@@ -13,6 +13,7 @@ const keys = require('./config/keys');
 
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
+const surveyRoutes = require('./routes/surveyRoutes.js');
 
 mongoose.connect(keys.mongoURI);
 const app = express();
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 
 authRoutes(app);
 billingRoutes(app);
+surveyRoutes(app);
 
 if(process.env.NODE_ENV === 'production'){
     //Express will look in that dir for req assets
