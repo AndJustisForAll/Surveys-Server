@@ -10,6 +10,7 @@ import {
 } from 'redux-form';
 import _ from 'lodash';
 import SurveyField from './SurveyField';
+import validateEmails from './../../utils/validateEmails';
 
 const FIELDS = [{
         label: 'Survey Title',
@@ -39,7 +40,6 @@ class SurveyForm extends Component {
             return <Field key={name} type="text" name={name} label={label} component={SurveyField} />
         });
     }
-
     render() {
         return <div className="row">
                         <h5 className="center">Create new survey</h5>
@@ -53,6 +53,24 @@ class SurveyForm extends Component {
     }
 }
 
+function validate(values = {}) {
+    const errors = {};
+
+    FIELDS.forEach(field => {
+        if (!Object.keys(values).includes(field.name)) {
+            errors[field.name] = `You must set the field ${field.name}`;
+        }
+    });
+
+    const invalidEmails = validateEmails(values.recipients) || [];
+    if (invalidEmails.length > 0) {
+        errors.recipients = `Invalid emails entered ${invalidEmails.map(email => `Email: ${email}\n`)}`;
+    }
+    return errors;
+}
+
+
 export default reduxForm({
+    validate,
     form: 'surveyForm'
 })(SurveyForm);

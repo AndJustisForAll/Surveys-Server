@@ -32,8 +32,8 @@ export const fetchSurveys = () =>
         });
     }
 
-export const createSurvey = (data) =>
-    async dispatch => {
-        const res = await axios.post('api/surveys/new', data);
+// export const createSurvey = (data) =>
+    // async dispatch => {
+        // const res = await axios.post('api/surveys/new', data);
         
-    }
+    // }
