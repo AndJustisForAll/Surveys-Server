@@ -10,6 +10,12 @@ module.exports = app => {
     app.get('/api/surveys/feedback', (req, res) => {
         res.send('Thank you for your feedback');
     });
+
+    app.get('/api/surveys', requireLogin, async(req,res) => {
+        const surveys = await Survey.find();
+        res.send(surveys); 
+
+    });
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         const {
             title,

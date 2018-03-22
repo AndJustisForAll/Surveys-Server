@@ -14,6 +14,8 @@ import reduxThunk from 'redux-thunk';
 
 
 import 'materialize-css/dist/css/materialize.min.css';
+import 'material-design-icons/iconfont/material-icons.css';
+import 'materialize-css/dist/js/materialize';
 
 //TODO:AMUNOZ remove these
 import axios from 'axios';

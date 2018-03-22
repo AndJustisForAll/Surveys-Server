@@ -11,26 +11,22 @@ import {
 import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
-
-const Dashboard = () => <h2> Dashboard </h2>;
-const SurveyNew = () => <h2> Survey New </h2>;
+import Dashboard from './Dashboard';
+import NewSurveyForm from './surveys/NewSurveyForm';
 
 class App extends Component {
     componentDidMount() {
         this.props.fetchUser();
     }
     render() {
-        return <div className="container">
-            <BrowserRouter>
-                <div>
+        return <BrowserRouter>
+                <div className="container">
                     <Header />
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/surveys" component={Dashboard} />
-                    <Route path="/surveys/new" component={SurveyNew} />
+                    <Route path="/surveys/new" component={NewSurveyForm} />
                 </div> 
             </BrowserRouter>
-        </div>
-
     }
 };
 
