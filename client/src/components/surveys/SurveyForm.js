@@ -11,24 +11,7 @@ import {
 import _ from 'lodash';
 import SurveyField from './SurveyField';
 import validateEmails from './../../utils/validateEmails';
-
-const FIELDS = [{
-        label: 'Survey Title',
-        name: 'title'
-    },
-    {
-        label: 'Survey Subject',
-        name: 'subject'
-    },
-    {
-        label: 'Email Body',
-        name: 'emailBody'
-    },
-    {
-        label: 'Recipients',
-        name: 'recipients'
-    },
-];
+import FIELDS from './formFields';
 
 class SurveyForm extends Component {
 
@@ -43,13 +26,12 @@ class SurveyForm extends Component {
     render() {
         return <div className="row">
                         <h5 className="center">Create new survey</h5>
-                        <form id="newSurveyForm" className="col s12" onSubmit={this.props.handleSubmit(values => console.log(values))}>
+                        <form id="newSurveyForm" className="col s12" onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)} >
                             {this.renderFields()}
                             <Link className="btn red" to="/dashboard">Cancel</Link>
                             <button className="btn right"type="submit">Next<i className="material-icons right">done</i></button>
                         </form>
                 </div>
-
     }
 }
 
@@ -72,5 +54,6 @@ function validate(values = {}) {
 
 export default reduxForm({
     validate,
-    form: 'surveyForm'
+    form: 'surveyForm',
+    destroyOnUnmount: false
 })(SurveyForm);
