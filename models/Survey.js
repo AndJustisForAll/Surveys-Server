@@ -18,7 +18,7 @@ const surveySchema = new Schema({
         default: 0
     },
     dateSent: Date,
-    lastResponded: Date,
+    lastReplied: Date,
     _user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

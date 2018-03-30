@@ -23,9 +23,10 @@ class Dashboard extends Component {
                            return <li className="collection-item avatar" key={i}>
                                     <i className="material-icons circle">assignment</i>
                                     <span className="title">{survey.title}</span>
+                                    <p>Sent: {moment(survey.dateSent).format('MMMM DD YYYY, h:mm:ss a')}</p>
                                     <p>Yes: {survey.yes}</p>
                                     <p>No: {survey.no}</p>
-                                    <span className="secondary-content">Sent: {moment(survey.dateSent).format('MMMM DD YYYY, h:mm:ss a')}</span>
+                                    <span className="secondary-content">Last Replied: {moment(survey.lastReplied).format('MMMM DD YYYY, h:mm:ss a')}</span>
                                 </li>
                         })}  
                     </ul>

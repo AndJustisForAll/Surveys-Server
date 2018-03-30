@@ -10,13 +10,13 @@ const { URL } = require('url');
 const Survey = mongoose.model('survey');
 
 module.exports = app => {
-    app.get('/api/surveys/:id/:choice', (req, res) => {
-        const { id, choice } = req.params;
-        res.send({ id, choice });
+    app.get('/api/surveys/:surveyID/:choice', (req, res) => {
+        const { surveyID, choice } = req.params;
+        res.send({ surveyID, choice });
     });
 
     app.get('/api/surveys', requireLogin, async (req, res) => {
-        const surveys = await Survey.find();
+        const surveys = await Survey.find({}, 'title yes no dateSent lastReplied');
         res.send(surveys);
 
     });
@@ -77,7 +77,8 @@ module.exports = app => {
                 }, {
                     $inc: {
                         [choice]: 1 },
-                    $set: { 'recipients.$.replied': true }
+                    $set: { 'recipients.$.replied': true },
+                    lastReplied: new Date()
                 }).exec();
             }).
             value();
