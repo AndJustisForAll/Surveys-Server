@@ -1,10 +1,6 @@
-import React, {
-    Component
-} from 'react';
-import {
-    connect
-} from 'react-redux';
-import StripeCheckout from 'react-stripe-checkout';
+import React, { Component } from 'react';  // eslint-disable-line no-unused-vars
+import { connect } from 'react-redux';
+import StripeCheckout from 'react-stripe-checkout'; // eslint-disable-line no-unused-vars
 import * as actions from './../actions';
 
 class Payments extends Component {
@@ -19,8 +15,8 @@ class Payments extends Component {
             >
                 <button className="btn">Add Credits</button>
             </StripeCheckout>
-        )
+        );
     }
 }
 
-export default connect(null, actions)(Payments)
+export default connect(null, actions)(Payments);

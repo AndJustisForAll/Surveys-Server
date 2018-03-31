@@ -32,6 +32,5 @@ passport.use(new GoogleStrategy({
             name: profile.displayName
         }).save();
         done(null, newUser);
-
     }
 ));

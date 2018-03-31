@@ -1,25 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./components/App";
-import {
-    Provider
-} from "react-redux";
-import {
-    createStore,
-    applyMiddleware
-} from "redux";
-import reducers from "./reducers";
+import React from 'react';  // eslint-disable-line no-unused-vars
+import ReactDOM from 'react-dom';
+import App from './components/App';  // eslint-disable-line no-unused-vars
+import { Provider } from 'react-redux';  // eslint-disable-line no-unused-vars
+import { createStore, applyMiddleware } from 'redux';
+import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
-
 
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'material-design-icons/iconfont/material-icons.css';
 import 'materialize-css/dist/js/materialize';
-
-//TODO:AMUNOZ remove these
-import axios from 'axios';
-window.axios = axios;
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 

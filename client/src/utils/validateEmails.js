@@ -9,4 +9,4 @@ export default (emails = '') => {
             return !email.match(VALID_EMAIL_REGEX);
         });
     return invalidEmails;
-}
+};

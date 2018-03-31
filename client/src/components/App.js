@@ -1,15 +1,8 @@
-import React, {
-    Component
-} from "react";
-import {
-    BrowserRouter,
-    Route
-} from "react-router-dom";
-import {
-    connect
-} from 'react-redux';
+import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import { BrowserRouter, Route } from 'react-router-dom';  // eslint-disable-line no-unused-vars
+import { connect } from 'react-redux';
 import * as actions from '../actions';
-import Header from './Header';
+import Header from './Header';  // eslint-disable-line no-unused-vars
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import NewSurveyForm from './surveys/NewSurveyForm';
@@ -19,7 +12,8 @@ class App extends Component {
         this.props.fetchUser();
     }
     render() {
-        return <BrowserRouter>
+        return (
+            <BrowserRouter>
                 <div className="container">
                     <Header />
                     <Route exact path="/" component={Landing} />
@@ -27,8 +21,8 @@ class App extends Component {
                     <Route path="/surveys/new" component={NewSurveyForm} />
                 </div> 
             </BrowserRouter>
+        );
     }
-};
+}
 
-//mapstatetoprops, actinscreators
 export default connect(null, actions)(App);

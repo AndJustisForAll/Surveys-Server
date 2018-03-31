@@ -57,7 +57,7 @@ module.exports = app => {
     app.post('/api/surveys/webhooks', async (req, res) => {
         const path = new Path('/api/surveys/:surveyID/:choice');
 
-        const events = _.chain(req.body)
+        _.chain(req.body)
             .map(({ email, url }) => {
                 const urlMatch = path.test(new URL(url).pathname);
                 if (urlMatch) {
@@ -65,7 +65,7 @@ module.exports = app => {
                         email,
                         surveyID: urlMatch.surveyID,
                         choice: urlMatch.choice
-                    }
+                    };
                 }
             })
             .compact()
@@ -76,7 +76,8 @@ module.exports = app => {
                     recipients: { $elemMatch: { email: email, replied: false } }
                 }, {
                     $inc: {
-                        [choice]: 1 },
+                        [choice]: 1
+                    },
                     $set: { 'recipients.$.replied': true },
                     lastReplied: new Date()
                 }).exec();
