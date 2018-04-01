@@ -12,7 +12,9 @@
     "server": "nodemon index.js",
     "debug": "nodemon --inspect-brk index.js",
     "client": "npm run start --prefix client",
+    "ng-client": "npm run start --prefix ng-emaily",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
+    "ng-dev": "concurrently \"npm run server\" \"npm run ng-client\" \"npm run webhook\"",
     "dev-debug": "concurrently \"npm run client\" \"npm run webhook\" \"npm run debug\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "./sendgrid_webhook.sh"
