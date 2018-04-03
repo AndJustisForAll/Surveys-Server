@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Survey } from './../classes/survey';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class SurveyService {
 
-  constructor() { }
+    constructor(private httpService: HttpService) { }
 
-  getSurveys() Survey[]{
-
-  }
+    async getSurveys() {
+        let surveys = await this.httpService.get('api/surveys');
+        return surveys || [];
+    }
 }

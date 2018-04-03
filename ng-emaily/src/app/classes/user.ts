@@ -1,5 +1,5 @@
 export class User {
     googleID: string;
-    name: striing;
+    name: string;
     credits: number = 0;
 }

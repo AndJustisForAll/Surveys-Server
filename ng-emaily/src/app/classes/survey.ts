@@ -1,5 +1,5 @@
-import { Recipient } from 'recipient';
-import { User } from 'user';
+import { Recipient } from './recipient';
+import { User } from './user';
 
 export class Survey {
     title: string;
@@ -8,7 +8,7 @@ export class Survey {
     recipients: Recipient[] = [];
     yes: number = 0;
     no: number = 0;
-    dateSent: date;
-    lastReplied: date;
+    dateSent: string;
+    lastReplied: string;
     user: User;
 }

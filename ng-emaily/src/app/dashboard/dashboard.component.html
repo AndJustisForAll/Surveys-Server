@@ -1,16 +1,16 @@
 <div>
     <ul class="collection">
-      <li class="collection-item avatar">
-                <i class="material-icons circle">assignment</i>
-                <span class="title">Title</span>
-                <p>Sent: Yesterday</p>
-                <p>Yes: 23434</p>
-                <p>No: 234</p>
-                <span class="secondary-content">Last Replied: NOW</span>
-            </li>
+        <li class="collection-item avatar" *ngFor="let survey of this.surveys">
+            <i class="material-icons circle">assignment</i>
+            <span class="title">{{survey.title}}</span>
+            <date-display displayLabel="Date Sent" [dateDisplay]="survey.dateSent">Date Sent</date-display>
+            <p>Yes: {{survey.yes}}</p>
+            <p>No: {{survey.no}}</p>
+            <date-display displayLabel="Last Replied" [dateDisplay]="survey.lastReplied"></date-display>
+        </li>
     </ul>
     <div class='fixed-action-btn'>
-        <a href="#" class="btn-floating btn-large red" >
+        <a href="#" class="btn-floating btn-large red">
             <i class="large material-icons">add</i>
         </a>
     </div>
