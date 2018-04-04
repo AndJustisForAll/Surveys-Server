@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+import { StripeCheckoutModule } from 'ng-stripe-checkout';
+
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -9,7 +12,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { HttpService } from './services/http.service';
 import { DateDisplayComponent } from './date-display/date-display.component';
-import { CheckoutComponent } from './checkout/checkout.component';
 import { HeaderComponent } from './header/header.component';
 
 
@@ -19,12 +21,12 @@ import { HeaderComponent } from './header/header.component';
         DashboardComponent,
         NotFoundComponent,
         DateDisplayComponent,
-        CheckoutComponent,
         HeaderComponent
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        StripeCheckoutModule
     ],
     providers: [HttpService],
     bootstrap: [AppComponent]

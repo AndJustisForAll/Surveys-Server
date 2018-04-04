@@ -10,4 +10,9 @@ export class HttpService {
         const response = await axios.get(url, params);
         return response.data;
     }
+
+    async post(url: string, params = {}) {
+      const response = await axios.post(url, params);
+      return response.data;
+    }
 }
