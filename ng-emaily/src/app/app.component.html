@@ -1,16 +1,2 @@
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="left brand-logo">{{title}}</a>
-        <ul *ngIf="isLogged;else loggedOut" id="nav-mobile" class="right">
-            <li>Payment</li>
-            <li><span>Credits: {{auth.credits}}</span></li>
-            <li><a href="/api/logout">Logout</a></li>
-        </ul>
-        <ng-template #loggedOut>
-            <ul id="nav-mobile" class="right">
-                <li><a href="/auth/google">Login with Google</a></li>
-            </ul>
-        </ng-template>
-    </div>
-</nav>
+<header></header>
 <router-outlet></router-outlet>

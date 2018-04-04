@@ -9,6 +9,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import { HttpService } from './services/http.service';
 import { DateDisplayComponent } from './date-display/date-display.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { DateDisplayComponent } from './date-display/date-display.component';
         AppComponent,
         DashboardComponent,
         NotFoundComponent,
-        DateDisplayComponent
+        DateDisplayComponent,
+        CheckoutComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
