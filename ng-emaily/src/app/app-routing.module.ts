@@ -4,8 +4,8 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: '/dashboard', pathMatch: "full" },
-    { path: "dashboard", component: DashboardComponent, pathMatch: "full" },
+    { path: "", redirectTo: '/surveys', pathMatch: "full" },
+    { path: "surveys", component: DashboardComponent, pathMatch: "full" },
     { path: "**", component: NotFoundComponent }
 ];
 

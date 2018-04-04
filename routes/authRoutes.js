@@ -1,4 +1,5 @@
 const passport = require('passport');
+const requireLogin = require('./../middleware/requireLogin');
 
 module.exports = (app) => {
     app.get('/auth/google', passport.authenticate('google', {
@@ -9,7 +10,7 @@ module.exports = (app) => {
         res.redirect('/surveys');
     });
 
-    app.get('/api/current_user', (req, res) => {
+    app.get('/api/current_user', requireLogin, (req, res) => {
         res.send(req.user);
     });
 
