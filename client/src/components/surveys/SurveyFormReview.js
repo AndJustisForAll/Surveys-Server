@@ -19,7 +19,7 @@ class SurveyFormReview extends Component {
         return <div>
             <h5>Please review your information</h5>
             <ul className="collection">
-                {FIELDS.map(field => 
+                {FIELDS.map(field =>
                     <li key={field.name} className="collection-item avatar">
                         <i className="material-icons circle">text_fields</i>
                         <span className="title">{field.label}</span>

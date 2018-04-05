@@ -1,6 +1,7 @@
 <nav>
     <div class="nav-wrapper">
-        <a href="#" class="left brand-logo">{{title}}</a>
+
+        <a routerLink="/" routerLinkActive="active" class="left brand-logo">{{title}}</a>
         <ul *ngIf="isLogged;else loggedOut" id="nav-mobile" class="right">
             <li>
                 <button class="btn" (click)="onClickBuy()">Add Credits</button>

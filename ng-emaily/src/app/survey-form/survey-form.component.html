@@ -1,0 +1,31 @@
+<div class="row">
+    <h5 class="center">Create new survey</h5>
+    <form id="newSurveyForm" class="col s12">
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="title" type="text" class="validate">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="subject" type="text" class="validate">
+                <label for="subject">Subject</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="emailBody" type="text" class="validate">
+                <label for="emailBody">Email Body</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="recipients" type="text" class="validate">
+                <label for="recipients">Recipients</label>
+            </div>
+        </div>
+        <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
+        <button (click)="toggleShowReviewForm(false)" class="btn right">Next<i class="material-icons right">done</i></button>
+    </form>
+</div>

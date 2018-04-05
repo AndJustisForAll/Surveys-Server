@@ -13,6 +13,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpService } from './services/http.service';
 import { DateDisplayComponent } from './date-display/date-display.component';
 import { HeaderComponent } from './header/header.component';
+import { NewSurveyFormComponent } from './new-survey-form/new-survey-form.component';
+import { SurveyFormComponent } from './survey-form/survey-form.component';
+import { SurveyFormReviewComponent } from './survey-form-review/survey-form-review.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { HeaderComponent } from './header/header.component';
         DashboardComponent,
         NotFoundComponent,
         DateDisplayComponent,
-        HeaderComponent
+        HeaderComponent,
+        NewSurveyFormComponent,
+        SurveyFormComponent,
+        SurveyFormReviewComponent
     ],
     imports: [
         BrowserModule,
