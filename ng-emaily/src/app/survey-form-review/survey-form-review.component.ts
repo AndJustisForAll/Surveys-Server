@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { SurveyForm } from './../classes/surveyForm';
 
 @Component({
     selector: 'survey-form-review',
@@ -6,12 +7,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
     styleUrls: ['./survey-form-review.component.css']
 })
 export class SurveyFormReviewComponent implements OnInit {
-    @Output() onReviewForm = new EventEmitter<boolean>();
+    @Output() onFormReview = new EventEmitter<any>();
+    @Input() private surveyForm: SurveyForm;
+    
     constructor() { }
 
     ngOnInit() { }
 
-    toggleShowReviewForm(showReview: boolean) {
-        this.onReviewForm.emit(showReview);
+    reviewFormFields(showReview: boolean) {
+        this.onFormReview.emit({surveyForm:this.surveyForm, showReview});
     }
 }

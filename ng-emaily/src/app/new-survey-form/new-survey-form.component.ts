@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SurveyForm } from './../classes/surveyForm';
 
 @Component({
     selector: 'new-survey-form',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewSurveyFormComponent implements OnInit {
     private showSurveyForm: boolean = true;
+    private surveyForm: SurveyForm;
+    
     constructor() { }
 
-    ngOnInit() {
-    }
+    ngOnInit() { }
 
-    onReviewForm(showReview: boolean) {
-        this.showSurveyForm = showReview;
+    onFormReview(props: any): void {
+        this.surveyForm = props.form;
+        this.showSurveyForm = props.showReview;
     }
 }

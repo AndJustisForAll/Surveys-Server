@@ -1,16 +1,16 @@
 <ul class="collection with-header">
     <li class="collection-header">
-        Title: Some title
+        Title: {{surveyForm.title}}
     </li>
     <li class="collection-header">
-        Subject: Some title
+        Subject: {{surveyForm.subject}}
     </li>
     <li class="collection-header">
-        Email Body: Some title
+        Email Body: {{surveyForm.emailBody}}
     </li>
     <li class="collection-header">
-        Recipients: Some title
+        Recipients: {{surveyForm.recipients}}
     </li>
 </ul>
-<button (click)="toggleShowReviewForm(true)" class="btn">Cancel</button>
+<button (click)="reviewFormFields(true)" class="btn">Cancel</button>
 <button class="btn green right">Submit<i class="material-icons">email</i></button>

@@ -1,6 +1,6 @@
 <div *ngIf="showSurveyForm; else showReview">
-    <survey-form (onReviewForm)="onReviewForm($event)"></survey-form>
+    <survey-form (onFormReview)="onFormReview($event)"></survey-form>
 </div>
 <ng-template #showReview>
-    <survey-form-review (onReviewForm)="onReviewForm($event)"></survey-form-review>
+    <survey-form-review (onFormReview)=" onFormReview($event) " [surveyForm]="surveyForm "></survey-form-review>
 </ng-template>
