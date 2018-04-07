@@ -10,7 +10,7 @@
         </li>
     </ul>
     <div class='fixed-action-btn'>
-        <a routerLink="/surveys/new" class="btn-floating btn-large red">
+        <a *ngIf="(auth | async).isLogged" routerLink="/surveys/new" class="btn-floating btn-large red">
             <i class="large material-icons">add</i>
         </a>
     </div>
