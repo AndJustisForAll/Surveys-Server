@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SurveyForm } from './../classes/surveyForm';
-import { Survey } from './../classes/survey';
 
 @Component({
     selector: 'survey-form',
@@ -11,20 +10,22 @@ export class SurveyFormComponent implements OnInit {
     @Output() onFormReview = new EventEmitter<any>();
     private form: SurveyForm;
     constructor() {
-        this.form = {
-            title: '',
-            subject: '',
-            emailBody: '',
-            recipients: ''
-        };
+        if (!this.form) {
+            this.form = {
+                title: '',
+                subject: '',
+                emailBody: '',
+                recipients: ''
+            };
+        }
     }
 
     ngOnInit() { }
 
     reviewFormFields(showReview: boolean): void {
-        //TODO:AMUNOZ  gather fields
-
-        this.onFormReview.emit({ form: this.form, showReview });
+        const { title, subject, emailBody, recipients } = this.form;
+        const form = new SurveyForm(title, subject, emailBody, recipients);
+        this.onFormReview.emit({ form, showReview });
     }
 
 }

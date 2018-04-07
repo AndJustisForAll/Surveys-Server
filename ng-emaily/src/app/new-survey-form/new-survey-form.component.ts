@@ -9,13 +9,15 @@ import { SurveyForm } from './../classes/surveyForm';
 export class NewSurveyFormComponent implements OnInit {
     private showSurveyForm: boolean = true;
     private surveyForm: SurveyForm;
-    
+
     constructor() { }
 
     ngOnInit() { }
 
     onFormReview(props: any): void {
-        this.surveyForm = props.form;
+        const { title, subject, emailBody, recipients } = props.form;
+        this.surveyForm = new SurveyForm(title, subject, emailBody, recipients);
+        //TODO:AMUNOZ value doesn't reflect in the form binding
         this.showSurveyForm = props.showReview;
     }
 }

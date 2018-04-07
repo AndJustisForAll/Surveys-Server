@@ -30,7 +30,8 @@
             </div>
         </div>
         <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
-        <button type="submit" (click)="reviewFormFields(false)" class="btn right">Next<i class="material-icons right">done</i></button>
+        <!--                                                    ng-form directive above-->
+        <button type="submit" (click)="reviewFormFields(false); surveyForm.reset()" class="btn right">Next<i class="material-icons right">done</i></button>
     </form>
 
 </div>
