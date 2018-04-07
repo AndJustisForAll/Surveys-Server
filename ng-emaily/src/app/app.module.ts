@@ -1,16 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { IAppState, rootReducer, INITIAL_STATE } from './store';
+
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-
 import { HttpService } from './services/http.service';
 import { DateDisplayComponent } from './date-display/date-display.component';
 import { HeaderComponent } from './header/header.component';
@@ -34,9 +36,14 @@ import { SurveyFormReviewComponent } from './survey-form-review/survey-form-revi
         BrowserModule,
         AppRoutingModule,
         StripeCheckoutModule,
-        FormsModule
+        FormsModule,
+        NgReduxModule
     ],
     providers: [HttpService],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(ngRedux: NgRedux<IAppState>) {
+        ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    }
+}

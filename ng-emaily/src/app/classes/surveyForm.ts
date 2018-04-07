@@ -1,8 +1,8 @@
 export class SurveyForm {
-    private title: string,
-    private subject: string,
-    private emailBody: string,
-    private recipients: string
+    title: string;
+    subject: string;
+    emailBody: string;
+    recipients: string;
     constructor(
         title: string,
         subject: string,

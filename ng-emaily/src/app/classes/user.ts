@@ -1,5 +1,6 @@
-export class User {
+export interface IUser {
     googleID: string;
     name: string;
-    credits: number = 0;
+    credits: number;
+    isLogged: boolean;
 }

@@ -2,11 +2,11 @@
     <div class="nav-wrapper">
 
         <a routerLink="/" routerLinkActive="active" class="left brand-logo">{{title}}</a>
-        <ul *ngIf="isLogged;else loggedOut" id="nav-mobile" class="right">
+        <ul *ngIf="(auth | async).isLogged;else loggedOut" id="nav-mobile" class="right">
             <li>
                 <button class="btn" (click)="onClickBuy()">Add Credits</button>
             </li>
-            <li><span>Credits: {{auth.credits}}</span></li>
+            <li><span>Credits: {{(auth | async).credits}}</span></li>
             <li><a href="/api/logout">Logout</a></li>
         </ul>
         <ng-template #loggedOut>

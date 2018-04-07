@@ -7,11 +7,11 @@ export class SurveyService {
 
     constructor(private httpService: HttpService) { }
 
-    async getSurveys(): any {
+    async getSurveys() {
         return await this.httpService.get('api/surveys');
     }
 
-    async saveSurvey(surveyForm: SurveyForm): any {
+    async saveSurvey(surveyForm: SurveyForm) {
         return await this.httpService.post('api/surveys', surveyForm);
     }
 }

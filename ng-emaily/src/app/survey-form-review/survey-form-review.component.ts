@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
-import{ Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { SurveyForm } from './../classes/surveyForm';
 import { SurveyService } from './../services/survey.service';
 
@@ -23,7 +23,7 @@ export class SurveyFormReviewComponent implements OnInit {
         this.onFormReview.emit({ form, showReview });
     }
 
-    async submit(): void {
+    async submit() {
         const user = await this.surveyService.saveSurvey(this.surveyForm);
         // return user;
         this.router.navigate(['/surveys']);

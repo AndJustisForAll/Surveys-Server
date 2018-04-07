@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './../classes/user';
+import { NgRedux, select } from '@angular-redux/store';
+import { IAppState } from './../store';
+import * as actions from './../actions';
+import { IUser } from './../classes/user';
 import { AuthService } from './../services/auth.service';
 import { PaymentService } from './../services/payment.service';
 import { StripeCheckoutLoader, StripeCheckoutHandler } from 'ng-stripe-checkout';
@@ -12,16 +15,14 @@ import { StripeCheckoutLoader, StripeCheckoutHandler } from 'ng-stripe-checkout'
 })
 export class HeaderComponent implements OnInit {
     private title: string = 'emaily';
-    private auth: User;
-    private isLogged: boolean = false;
+    @select() auth: IUser;
     private stripeCheckoutHandler: StripeCheckoutHandler;
 
-    constructor(private authService: AuthService, private stripeCheckoutLoader: StripeCheckoutLoader, private paymentService: PaymentService) { }
+    constructor(private authService: AuthService, private stripeCheckoutLoader: StripeCheckoutLoader, private paymentService: PaymentService, private ngRedux: NgRedux<IAppState>) { }
 
     ngOnInit() {
         this.authService.fetchUser().then((userData) => {
-            this.auth = userData;
-            this.isLogged = !!this.auth.googleID;
+            this.ngRedux.dispatch({ auth: userData, type: actions.FETCH_USER });
         })
     }
 
@@ -34,8 +35,8 @@ export class HeaderComponent implements OnInit {
             amount: 500,
             currency: 'USD',
             token: (token) => {
-                this.paymentService.handleToken(token).then((res) => {
-                    this.auth = res;
+                this.paymentService.handleToken(token).then((userData) => {
+                    this.ngRedux.dispatch({ auth: userData, type: actions.FETCH_USER });
                 })
             }
         }).then((handler: StripeCheckoutHandler) => {
