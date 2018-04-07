@@ -1,4 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from './../store';
+import * as actions from './../actions';
 import { Router } from '@angular/router';
 import { SurveyForm } from './../classes/surveyForm';
 import { SurveyService } from './../services/survey.service';
@@ -13,7 +16,7 @@ export class SurveyFormReviewComponent implements OnInit {
     @Output() onFormReview = new EventEmitter<any>();
     @Input() private surveyForm: SurveyForm;
 
-    constructor(private surveyService: SurveyService, private router: Router) { }
+    constructor(private surveyService: SurveyService, private router: Router, private ngRedux: NgRedux<IAppState>) { }
 
     ngOnInit() { }
 
@@ -25,7 +28,7 @@ export class SurveyFormReviewComponent implements OnInit {
 
     async submit() {
         const user = await this.surveyService.saveSurvey(this.surveyForm);
-        // return user;
+        this.ngRedux.dispatch({ type: actions.FETCH_USER, auth: user });
         this.router.navigate(['/surveys']);
     }
 }
