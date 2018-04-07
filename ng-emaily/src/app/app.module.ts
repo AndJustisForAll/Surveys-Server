@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 
 import { StripeCheckoutModule } from 'ng-stripe-checkout';
 
@@ -32,7 +33,8 @@ import { SurveyFormReviewComponent } from './survey-form-review/survey-form-revi
     imports: [
         BrowserModule,
         AppRoutingModule,
-        StripeCheckoutModule
+        StripeCheckoutModule,
+        FormsModule
     ],
     providers: [HttpService],
     bootstrap: [AppComponent]

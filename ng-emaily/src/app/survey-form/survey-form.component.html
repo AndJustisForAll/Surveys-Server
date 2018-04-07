@@ -1,31 +1,36 @@
 <div class="row">
     <h5 class="center">Create new survey</h5>
-    <form id="newSurveyForm" class="col s12">
+    <form #surveyForm="ngForm" class="col s12">
         <div class="row">
             <div class="input-field col s6">
-                <input id="title" type="text" class="validate">
+                <input name="title" #titleRef="ngModel" [(ngModel)]="form.title" type="text" class="validate" required>
+                <div [hidden]="titleRef.valid || titleRef.pristine" class="alert alert-danger">Title is required</div>
                 <label for="title">Title</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="subject" type="text" class="validate">
+                <input name="subject" #subjectRef="ngModel" [(ngModel)]="form.subject" type="text" class="validate" required>
+                <div [hidden]="subjectRef.valid || subjectRef.pristine" class="alert alert-danger">Subject is required</div>
                 <label for="subject">Subject</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="emailBody" type="text" class="validate">
+                <input name="emailBody" #emailBodyRef="ngModel" [(ngModel)]="form.emailBody" type="text" class="validate" required>
+                <div [hidden]="emailBodyRef.valid || emailBodyRef.pristine" class="alert alert-danger">Email Body is required</div>
                 <label for="emailBody">Email Body</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="recipients" type="text" class="validate">
+                <input name="recipients" #recipientsRef="ngModel" [(ngModel)]="form.recipients" type="text" class="validate" required>
+                <div [hidden]="recipientsRef.valid || recipientsRef.pristine" class="alert alert-danger">Recipient/s required</div>
                 <label for="recipients">Recipients</label>
             </div>
         </div>
+        <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
+        <button type="submit" (click)="reviewFormFields(false)" class="btn right">Next<i class="material-icons right">done</i></button>
     </form>
-    <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
-    <button (click)="reviewFormFields(false)" class="btn right">Next<i class="material-icons right">done</i></button>
+
 </div>
