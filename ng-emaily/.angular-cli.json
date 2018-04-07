@@ -24,7 +24,7 @@
         "../node_modules/material-design-icons/iconfont/material-icons.css"
       ],
       "scripts": [
-        "../node_modules/materialize-css/dist/js/materialize.js",
+        "../node_modules/materialize-css/dist/js/materialize.min.js",
         "../node_modules/moment/min/moment.min.js"
       ],
       "environmentSource": "environments/environment.ts",

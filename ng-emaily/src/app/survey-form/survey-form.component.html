@@ -3,30 +3,30 @@
     <form #surveyForm="ngForm" class="col s12">
         <div class="row">
             <div class="input-field col s6">
-                <input name="title" #titleRef="ngModel" [(ngModel)]="form.title" type="text" class="validate" required>
+                <input name="title" #titleRef="ngModel" [(ngModel)]="form.title" type="text" class="validate" required placeholder="Doggos Campaign Survey">
                 <div [hidden]="titleRef.valid || titleRef.pristine" class="alert alert-danger">Title is required</div>
-                <label for="title">Title</label>
+                <label class="active" for="title">Title</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input name="subject" #subjectRef="ngModel" [(ngModel)]="form.subject" type="text" class="validate" required>
+                <input name="subject" #subjectRef="ngModel" [(ngModel)]="form.subject" type="text" class="validate" required placeholder="Do you like Doggos?">
                 <div [hidden]="subjectRef.valid || subjectRef.pristine" class="alert alert-danger">Subject is required</div>
-                <label for="subject">Subject</label>
+                <label class="active" for="subject">Subject</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input name="emailBody" #emailBodyRef="ngModel" [(ngModel)]="form.emailBody" type="text" class="validate" required>
+                <input name="emailBody" #emailBodyRef="ngModel" [(ngModel)]="form.emailBody" type="text" class="validate" required placeholder="Some body text about campaign...">
                 <div [hidden]="emailBodyRef.valid || emailBodyRef.pristine" class="alert alert-danger">Email Body is required</div>
-                <label for="emailBody">Email Body</label>
+                <label class="active" for="emailBody">Email Body</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input name="recipients" #recipientsRef="ngModel" [(ngModel)]="form.recipients" type="text" class="validate" required>
+                <input name="recipients" #recipientsRef="ngModel" [(ngModel)]="form.recipients" type="text" class="validate" required placeholder="person@aol.com,another@yahoo.com">
                 <div [hidden]="recipientsRef.valid || recipientsRef.pristine" class="alert alert-danger">Recipient/s required</div>
-                <label for="recipients">Recipients</label>
+                <label class="active" for="recipients">Recipients</label>
             </div>
         </div>
         <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
