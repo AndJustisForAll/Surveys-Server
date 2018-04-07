@@ -4,7 +4,8 @@ import { SurveyForm } from './../classes/surveyForm';
 @Component({
     selector: 'survey-form',
     templateUrl: './survey-form.component.html',
-    styleUrls: ['./survey-form.component.css']
+    styleUrls: ['./survey-form.component.css'],
+    
 })
 export class SurveyFormComponent implements OnInit {
     @Output() onFormReview = new EventEmitter<any>();
