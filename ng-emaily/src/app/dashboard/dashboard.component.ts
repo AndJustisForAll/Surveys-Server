@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {select} from '@angular-redux/store';
-import {IUser} from './../classes/user';
+import { NgRedux, select } from '@angular-redux/store';
+import { IUser } from './../classes/user';
+import * as actions from './../actions';
+import { IAppState } from './../store';
 import { SurveyService } from './../services/survey.service';
+import { ISurvey } from './../classes/survey';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,14 +13,14 @@ import { SurveyService } from './../services/survey.service';
     providers: [SurveyService]
 })
 export class DashboardComponent implements OnInit {
-    private surveys;
+    @select() surveys: ISurvey[];
     @select() auth: IUser;
-    constructor(private surveyService: SurveyService) {
-        this.surveys = [];
+    constructor(private surveyService: SurveyService, private ngRedux: NgRedux<IAppState>) {
     }
 
     async getSurveys() {
-        this.surveys = await this.surveyService.getSurveys();
+        const surveys = await this.surveyService.getSurveys();
+        this.ngRedux.dispatch({ type: actions.FETCH_SURVEYS, surveys });
     }
 
     ngOnInit() {

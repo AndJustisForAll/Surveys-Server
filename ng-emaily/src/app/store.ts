@@ -1,7 +1,9 @@
 import { IUser } from './classes/user';
+import { ISurvey } from './classes/survey';
 
 export interface IAppState {
     auth: IUser;
+    surveys: ISurvey[];
 }
 
 export const INITIAL_STATE: IAppState = {
@@ -10,7 +12,8 @@ export const INITIAL_STATE: IAppState = {
         name: '',
         credits: 0,
         isLogged: false
-    }
+    },
+    surveys: []
 }
 
 export function rootReducer(state: IAppState, action): IAppState {
@@ -19,6 +22,11 @@ export function rootReducer(state: IAppState, action): IAppState {
             return {
                 ...state,
                 auth: { ...action.auth, isLogged: !!action.auth.googleID }
+            };
+        case 'FETCH_SURVEYS':
+            return {
+                ...state,
+                surveys: action.surveys
             };
         default:
             return state;

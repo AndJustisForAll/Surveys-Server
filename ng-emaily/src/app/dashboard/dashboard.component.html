@@ -1,6 +1,6 @@
 <div>
     <ul class="collection">
-        <li class="collection-item avatar" *ngFor="let survey of this.surveys">
+        <li class="collection-item avatar" *ngFor="let survey of (surveys | async)">
             <i class="material-icons circle">assignment</i>
             <span class="title">{{survey.title}}</span>
             <date-display displayLabel="Date Sent" [dateDisplay]="survey.dateSent">Date Sent</date-display>

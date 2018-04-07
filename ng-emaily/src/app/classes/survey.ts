@@ -1,14 +1,7 @@
-// import { Recipient } from './recipient';
-// import { User } from './user';
-
-export class Survey {
+export interface ISurvey {
     title: string;
-    body: string;
-    subject: string;
-    recipients: string;
-    yes: number = 0;
-    no: number = 0;
+    yes: number;
+    no: number;
     dateSent: string;
-    lastReplied: string;
-    // user: User;
+    _id: string;
 }
