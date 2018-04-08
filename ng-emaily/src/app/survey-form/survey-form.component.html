@@ -31,7 +31,7 @@
         </div>
         <a routerLink="/surveys" class="btn red">Cancel<i class="material-icons left">done</i></a>
         <!--                                                    ng-form directive above-->
-        <button type="submit" (click)="reviewFormFields(false); surveyForm.reset()" class="btn right">Next<i class="material-icons right">done</i></button>
+        <button type="submit" [disabled]="!surveyForm.form.valid" (click)="reviewFormFields(false); surveyForm.reset()" class="btn right">Next<i class="material-icons right">done</i></button>
     </form>
 
 </div>
